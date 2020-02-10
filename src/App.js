@@ -9,17 +9,18 @@ const app = props => {
       {name: 'Max', age: 28},
       {name: 'Manu', age: 29},
       {name: 'Stephanie', age: 26}
-    ],
-    otherState: 'some other value'
+    ]
   })
 
-  useState('some other value')
+  const [otherState, setOtherState] = useState('some other value')
 
-  const switchNameHandler = () => {
+  console.log(personsState, otherState)
+
+  const switchNameHandler = (newName) => {
     // console.log('Was Clicked')
     // DO NOT USE THIS!: this.state.persons[0].name = 'Maximilian'
     setPersonsState({persons: [
-      { name: 'Maximilian', age: 28 },
+      { name: newName, age: 28 },
       { name: 'Manu', age: 29 },
       { name: 'Stephanie', age: 27 }
       ],
@@ -31,10 +32,17 @@ const app = props => {
     <div className="App">
       <h1>Hi, I'm a react App</h1>
       <p>This is really working!</p>
-      <button onClick={switchNameHandler}>Switch Name</button>
-      <Person name={personsState.persons[0].name} age={personsState.persons[0].age}/>
-      <Person name={personsState.persons[1].name} age={personsState.persons[1].age}>My Hobbies: Racing</Person>
-      <Person name={personsState.persons[2].name} age={personsState.persons[2].age}/>
+      <button onClick={() => switchNameHandler('Maximilian!!')}>Switch Name</button>
+      <Person 
+        name={personsState.persons[0].name} 
+        age={personsState.persons[0].age}/>
+      <Person 
+        name={personsState.persons[1].name}
+        age={personsState.persons[1].age}
+        click={switchNameHandler.bind(this, 'Max!')} >My Hobbies: Racing</Person>
+      <Person 
+        name={personsState.persons[2].name}
+        age={personsState.persons[2].age}/>
     </div>
   );
   //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'))
@@ -42,5 +50,3 @@ const app = props => {
 
 
 export default app;
-
-
