@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import './Person/Person.css';
 import Person from './Person/Person'
-import UserInput from './UserInput/UserInput';
-import UserOutput from './UserOutput/UserOutput';
 
 const app = props => {
 
@@ -13,10 +11,6 @@ const app = props => {
       {name: 'Manu', age: 29},
       {name: 'Stephanie', age: 26}
     ]
-  })
-
-  const [ usernameState, setUsernameState ] = useState({
-    username: 'JukeFA'
   })
 
   const [otherState, setOtherState] = useState('some other value')
@@ -52,10 +46,6 @@ const app = props => {
     cursor: 'pointer'
   }
 
-  const userChangedHandler = (event) => {
-    setUsernameState({username: event.target.value})
-  }
-
   return (
     <div className="App">
       <h1>Hi, I'm a react App</h1>
@@ -74,10 +64,6 @@ const app = props => {
       <Person 
         name={personsState.persons[2].name}
         age={personsState.persons[2].age}/>
-
-      <UserInput changed={userChangedHandler}/>
-      <UserOutput name={usernameState.username} />
-      <UserOutput name={usernameState.username} />
     </div>
   );
   //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'))
